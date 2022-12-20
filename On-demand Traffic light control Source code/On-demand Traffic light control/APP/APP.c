@@ -9,8 +9,9 @@
  * 
  */
 #define F_CPU 1000000UL 
+#include "../LIB/STD_TYPES.h"
+#include "../MCAL/MILLIS/MILLIS_INT.h"
 #include "../ECUAL/traffic_light/traffic_light_INT.h"
-#include "../ECUAL/MILLIS/MILLIS_INT.h"
 #include "../ECUAL/button/Button_INT.h"
 #include "APP_CONFIG.h"
 #include "APP.h"
@@ -31,6 +32,7 @@ ST_Button_t PEDs_button = {.buttonPin = PEDS_BUTTON};
 /* define both traffic light and PEDS sign */
 ST_TrafficLight_t Traffic_light = {T_GREEN_LED_PIN ,T_YELLOW_LED_PIN,T_RED_LED_PIN} ,Peds_sign ={PEDS_GREEN_LED_PIN,PEDS_YELLOW_LED_PIN,PEDS_RED_LED_PIN} ;
 
+/* get only the short click of the PEDs button */
 static inline void DoButton(void)
 {
 	/*get button state */
@@ -208,6 +210,7 @@ void APP_pedestrian_mode(void)
 			switch(state_counter)
 			{
 				case 0 :
+					TRAFFIC_LIGHT_Drive(&Peds_sign,RED) ;
 					if (currentState == YELLOW)
 					{
 						if((currentTime-lastTimeYellow)>=YELLOW_LIGHT_BLINKING_INTERVAL)
@@ -216,14 +219,14 @@ void APP_pedestrian_mode(void)
 							TRAFFIC_LIGHT_Drive(&Traffic_light,YELLOW) ;
 							/*set the old counter to be the current counter to begin counting again*/
 							lastTimeYellow = currentTime ;
+
 						}
 					}
 					else
 					{
 						TRAFFIC_LIGHT_Drive(&Traffic_light,GREEN) ;
 					}
-				TRAFFIC_LIGHT_Drive(&Peds_sign,RED) ;
-				break;
+					break;
 				case 1 :
 					if((currentTime-lastTimeYellow)>=YELLOW_LIGHT_BLINKING_INTERVAL)
 					{

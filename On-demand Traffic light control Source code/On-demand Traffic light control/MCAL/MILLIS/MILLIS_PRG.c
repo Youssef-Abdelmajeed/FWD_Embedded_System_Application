@@ -10,12 +10,12 @@
  * 
  */
 #include "../../LIB/STD_TYPES.h" 
-#include "../../MCAL/TIMERS/TIMERS_INT.h"
+#include "TIMERS/TIMERS_INT.h"
 #include "../../MCAL/GIE/GIE_INT.h"
 #include "MILLIS_INT.h"
 
 /* number of milliseconds passed */
-millis_t millis  = 0 ; 
+millis_t millis  = 0 ;
 
 /* each timer overflow(timer ISR) */ 
 static void Millis_INC(void)

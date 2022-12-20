@@ -135,12 +135,6 @@
     <Compile Include="ECUAL\button\Button_PRG.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\MILLIS\MILLIS_INT.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ECUAL\MILLIS\MILLIS_PRG.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="ECUAL\traffic_light\traffic_light_PRG.c">
       <SubType>compile</SubType>
     </Compile>
@@ -174,19 +168,24 @@
     <Compile Include="MCAL\GIE\GIE_REG.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\TIMERS\TIMERS_INT.h">
+    <Compile Include="MCAL\MILLIS\MILLIS_INT.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\TIMERS\TIMERS_PRG.c">
+    <Compile Include="MCAL\MILLIS\MILLIS_PRG.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\TIMERS\TIMERS_REG.h">
+    <Compile Include="MCAL\MILLIS\TIMERS\TIMERS_INT.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\MILLIS\TIMERS\TIMERS_PRG.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\MILLIS\TIMERS\TIMERS_REG.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ECUAL\button" />
-    <Folder Include="ECUAL\MILLIS\" />
     <Folder Include="ECUAL\traffic_light" />
     <Folder Include="LIB\" />
     <Folder Include="MCAL" />
@@ -194,7 +193,8 @@
     <Folder Include="MCAL\DIO" />
     <Folder Include="MCAL\GIE" />
     <Folder Include="APP" />
-    <Folder Include="MCAL\TIMERS" />
+    <Folder Include="MCAL\MILLIS" />
+    <Folder Include="MCAL\MILLIS\TIMERS" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
