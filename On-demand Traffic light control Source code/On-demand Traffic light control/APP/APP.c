@@ -217,6 +217,8 @@ void APP_pedestrian_mode(void)
 						{
 							/*toggle yellow led every 0.25 sec*/
 							TRAFFIC_LIGHT_Drive(&Traffic_light,YELLOW) ;
+							TRAFFIC_LIGHT_Drive(&Peds_sign,RED) ;
+
 							/*set the old counter to be the current counter to begin counting again*/
 							lastTimeYellow = currentTime ;
 

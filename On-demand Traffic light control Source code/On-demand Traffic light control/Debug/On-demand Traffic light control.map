@@ -237,7 +237,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xb3c
+.text           0x00000000      0xb46
  *(.vectors)
  .vectors       0x00000000       0x54 D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -322,80 +322,80 @@ END GROUP
                 0x000000b0      0x112 APP/APP.o
                 0x000000b0                APP_normal_mode
  .text.APP_pedestrian_mode
-                0x000001c2      0x286 APP/APP.o
+                0x000001c2      0x290 APP/APP.o
                 0x000001c2                APP_pedestrian_mode
  .text.startApp
-                0x00000448       0x42 APP/APP.o
-                0x00000448                startApp
+                0x00000452       0x42 APP/APP.o
+                0x00000452                startApp
  .text.Button_Init
-                0x0000048a       0x1a ECUAL/button/Button_PRG.o
-                0x0000048a                Button_Init
+                0x00000494       0x1a ECUAL/button/Button_PRG.o
+                0x00000494                Button_Init
  .text.Button_readState
-                0x000004a4      0x11a ECUAL/button/Button_PRG.o
-                0x000004a4                Button_readState
+                0x000004ae      0x11a ECUAL/button/Button_PRG.o
+                0x000004ae                Button_readState
  .text.TRAFFIC_LIGHT_Init
-                0x000005be       0x24 ECUAL/traffic_light/traffic_light_PRG.o
-                0x000005be                TRAFFIC_LIGHT_Init
+                0x000005c8       0x24 ECUAL/traffic_light/traffic_light_PRG.o
+                0x000005c8                TRAFFIC_LIGHT_Init
  .text.TRAFFIC_LIGHT_Drive
-                0x000005e2       0x4e ECUAL/traffic_light/traffic_light_PRG.o
-                0x000005e2                TRAFFIC_LIGHT_Drive
- .text.main     0x00000630        0xa main.o
-                0x00000630                main
+                0x000005ec       0x4e ECUAL/traffic_light/traffic_light_PRG.o
+                0x000005ec                TRAFFIC_LIGHT_Drive
+ .text.main     0x0000063a        0xa main.o
+                0x0000063a                main
  .text.DIO_setPinDirection
-                0x0000063a       0xd8 MCAL/DIO/DIO_PRG.o
-                0x0000063a                DIO_setPinDirection
+                0x00000644       0xd8 MCAL/DIO/DIO_PRG.o
+                0x00000644                DIO_setPinDirection
  .text.DIO_setPinValue
-                0x00000712       0xb8 MCAL/DIO/DIO_PRG.o
-                0x00000712                DIO_setPinValue
+                0x0000071c       0xb8 MCAL/DIO/DIO_PRG.o
+                0x0000071c                DIO_setPinValue
  .text.DIO_getPinValue
-                0x000007ca       0x7a MCAL/DIO/DIO_PRG.o
-                0x000007ca                DIO_getPinValue
+                0x000007d4       0x7a MCAL/DIO/DIO_PRG.o
+                0x000007d4                DIO_getPinValue
  .text.GIE_Enable
-                0x00000844        0x8 MCAL/GIE/GIE_PRG.o
-                0x00000844                GIE_Enable
+                0x0000084e        0x8 MCAL/GIE/GIE_PRG.o
+                0x0000084e                GIE_Enable
  .text.GIE_Disable
-                0x0000084c        0x8 MCAL/GIE/GIE_PRG.o
-                0x0000084c                GIE_Disable
+                0x00000856        0x8 MCAL/GIE/GIE_PRG.o
+                0x00000856                GIE_Disable
  .text.Millis_INC
-                0x00000854       0x30 MCAL/MILLIS/MILLIS_PRG.o
+                0x0000085e       0x30 MCAL/MILLIS/MILLIS_PRG.o
  .text.Millis_Init
-                0x00000884       0x22 MCAL/MILLIS/MILLIS_PRG.o
-                0x00000884                Millis_Init
+                0x0000088e       0x22 MCAL/MILLIS/MILLIS_PRG.o
+                0x0000088e                Millis_Init
  .text.Millis_get
-                0x000008a6       0x42 MCAL/MILLIS/MILLIS_PRG.o
-                0x000008a6                Millis_get
+                0x000008b0       0x42 MCAL/MILLIS/MILLIS_PRG.o
+                0x000008b0                Millis_get
  .text.Timer_SetPrescaller
-                0x000008e8       0x22 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
-                0x000008e8                Timer_SetPrescaller
+                0x000008f2       0x22 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+                0x000008f2                Timer_SetPrescaller
  .text.Timer_SetWaveMode
-                0x0000090a       0x7e MCAL/MILLIS/TIMERS/TIMERS_PRG.o
-                0x0000090a                Timer_SetWaveMode
+                0x00000914       0x7e MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+                0x00000914                Timer_SetWaveMode
  .text.Timer_Init
-                0x00000988       0x1a MCAL/MILLIS/TIMERS/TIMERS_PRG.o
-                0x00000988                Timer_Init
+                0x00000992       0x1a MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+                0x00000992                Timer_Init
  .text.Timer_SetOVF_Callback
-                0x000009a2       0x3c MCAL/MILLIS/TIMERS/TIMERS_PRG.o
-                0x000009a2                Timer_SetOVF_Callback
+                0x000009ac       0x3c MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+                0x000009ac                Timer_SetOVF_Callback
  .text.Timer_SetOVFRegister
-                0x000009de       0x12 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
-                0x000009de                Timer_SetOVFRegister
+                0x000009e8       0x12 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+                0x000009e8                Timer_SetOVFRegister
  .text.__vector_11
-                0x000009f0       0x52 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
-                0x000009f0                __vector_11
+                0x000009fa       0x52 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+                0x000009fa                __vector_11
  .text.__vector_10
-                0x00000a42       0x52 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
-                0x00000a42                __vector_10
+                0x00000a4c       0x52 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+                0x00000a4c                __vector_10
  .text.__vector_5
-                0x00000a94       0x52 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
-                0x00000a94                __vector_5
+                0x00000a9e       0x52 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+                0x00000a9e                __vector_5
  .text.__vector_4
-                0x00000ae6       0x52 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
-                0x00000ae6                __vector_4
-                0x00000b38                . = ALIGN (0x2)
+                0x00000af0       0x52 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+                0x00000af0                __vector_4
+                0x00000b42                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000b38        0x0 d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000b38                _exit
-                0x00000b38                exit
+ .fini9         0x00000b42        0x0 d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000b42                _exit
+                0x00000b42                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -414,11 +414,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000b38        0x4 d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000b42        0x4 d:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000b3c                _etext = .
+                0x00000b46                _etext = .
 
-.data           0x00800060       0x32 load address 0x00000b3c
+.data           0x00800060       0x32 load address 0x00000b46
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -478,8 +478,8 @@ END GROUP
  COMMON         0x008000b2        0x1 APP/APP.o
                 0x008000b2                currentState
                 0x008000b3                PROVIDE (__bss_end, .)
-                0x00000b3c                __data_load_start = LOADADDR (.data)
-                0x00000b6e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000b46                __data_load_start = LOADADDR (.data)
+                0x00000b78                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008000b3        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -579,17 +579,17 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1d26
+.debug_info     0x00000000     0x1d47
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x000004e6      0x73d APP/APP.o
- .debug_info    0x00000c23      0x24f ECUAL/button/Button_PRG.o
- .debug_info    0x00000e72      0x24f ECUAL/traffic_light/traffic_light_PRG.o
- .debug_info    0x000010c1       0x84 main.o
- .debug_info    0x00001145      0x4b7 MCAL/DIO/DIO_PRG.o
- .debug_info    0x000015fc       0x99 MCAL/GIE/GIE_PRG.o
- .debug_info    0x00001695      0x245 MCAL/MILLIS/MILLIS_PRG.o
- .debug_info    0x000018da      0x44c MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+ .debug_info    0x000004e6      0x75e APP/APP.o
+ .debug_info    0x00000c44      0x24f ECUAL/button/Button_PRG.o
+ .debug_info    0x00000e93      0x24f ECUAL/traffic_light/traffic_light_PRG.o
+ .debug_info    0x000010e2       0x84 main.o
+ .debug_info    0x00001166      0x4b7 MCAL/DIO/DIO_PRG.o
+ .debug_info    0x0000161d       0x99 MCAL/GIE/GIE_PRG.o
+ .debug_info    0x000016b6      0x245 MCAL/MILLIS/MILLIS_PRG.o
+ .debug_info    0x000018fb      0x44c MCAL/MILLIS/TIMERS/TIMERS_PRG.o
 
 .debug_abbrev   0x00000000      0xc1f
  *(.debug_abbrev)
@@ -603,17 +603,17 @@ END GROUP
  .debug_abbrev  0x000009c3      0x107 MCAL/MILLIS/MILLIS_PRG.o
  .debug_abbrev  0x00000aca      0x155 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
 
-.debug_line     0x00000000      0xee0
+.debug_line     0x00000000      0xee6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 D:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000116      0x301 APP/APP.o
- .debug_line    0x00000417      0x1ce ECUAL/button/Button_PRG.o
- .debug_line    0x000005e5      0x13c ECUAL/traffic_light/traffic_light_PRG.o
- .debug_line    0x00000721       0x5b main.o
- .debug_line    0x0000077c      0x26b MCAL/DIO/DIO_PRG.o
- .debug_line    0x000009e7       0x84 MCAL/GIE/GIE_PRG.o
- .debug_line    0x00000a6b      0x134 MCAL/MILLIS/MILLIS_PRG.o
- .debug_line    0x00000b9f      0x341 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
+ .debug_line    0x00000116      0x307 APP/APP.o
+ .debug_line    0x0000041d      0x1ce ECUAL/button/Button_PRG.o
+ .debug_line    0x000005eb      0x13c ECUAL/traffic_light/traffic_light_PRG.o
+ .debug_line    0x00000727       0x5b main.o
+ .debug_line    0x00000782      0x26b MCAL/DIO/DIO_PRG.o
+ .debug_line    0x000009ed       0x84 MCAL/GIE/GIE_PRG.o
+ .debug_line    0x00000a71      0x134 MCAL/MILLIS/MILLIS_PRG.o
+ .debug_line    0x00000ba5      0x341 MCAL/MILLIS/TIMERS/TIMERS_PRG.o
 
 .debug_frame    0x00000000      0x478
  *(.debug_frame)

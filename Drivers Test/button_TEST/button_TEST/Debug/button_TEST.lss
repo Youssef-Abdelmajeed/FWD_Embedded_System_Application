@@ -1,0 +1,1283 @@
+
+button_TEST.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000724  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000018  00800060  00000724  000007b8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000c  00800078  00800078  000007d0  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000007d0  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000800  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000170  00000000  00000000  0000083c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000165e  00000000  00000000  000009ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000a84  00000000  00000000  0000200a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000a9d  00000000  00000000  00002a8e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000003c0  00000000  00000000  0000352c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000885  00000000  00000000  000038ec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000bae  00000000  00000000  00004171  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000110  00000000  00000000  00004d1f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 67 03 	jmp	0x6ce	; 0x6ce <__vector_4>
+  14:	0c 94 3e 03 	jmp	0x67c	; 0x67c <__vector_5>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 15 03 	jmp	0x62a	; 0x62a <__vector_10>
+  2c:	0c 94 ec 02 	jmp	0x5d8	; 0x5d8 <__vector_11>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e4 e2       	ldi	r30, 0x24	; 36
+  68:	f7 e0       	ldi	r31, 0x07	; 7
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a8 37       	cpi	r26, 0x78	; 120
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a8 e7       	ldi	r26, 0x78	; 120
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a4 38       	cpi	r26, 0x84	; 132
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 f0 01 	call	0x3e0	; 0x3e0 <main>
+  8a:	0c 94 90 03 	jmp	0x720	; 0x720 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <Button_Init>:
+#include "../DIO/DIO_INT.h"
+#include "../MILLIS/MILLIS_INT.h"
+#include "Button_INT.h"
+
+void Button_Init(ST_Button_t * button)
+{
+  92:	cf 93       	push	r28
+  94:	df 93       	push	r29
+  96:	ec 01       	movw	r28, r24
+	DIO_setPinDirection(button->buttonPin,INPUT) ;
+  98:	60 e0       	ldi	r22, 0x00	; 0
+  9a:	88 81       	ld	r24, Y
+  9c:	0e 94 e3 00 	call	0x1c6	; 0x1c6 <DIO_setPinDirection>
+	button->buttonPressState =NoAction ;
+  a0:	19 82       	std	Y+1, r1	; 0x01
+	button->lastButtonState = LOW ;
+  a2:	1a 82       	std	Y+2, r1	; 0x02
+	button-> isLongPress = 0 ;
+  a4:	1b 82       	std	Y+3, r1	; 0x03
+}
+  a6:	df 91       	pop	r29
+  a8:	cf 91       	pop	r28
+  aa:	08 95       	ret
+
+000000ac <Button_readState>:
+
+void Button_readState(ST_Button_t * button) 
+{
+  ac:	cf 92       	push	r12
+  ae:	df 92       	push	r13
+  b0:	ef 92       	push	r14
+  b2:	ff 92       	push	r15
+  b4:	0f 93       	push	r16
+  b6:	1f 93       	push	r17
+  b8:	cf 93       	push	r28
+  ba:	df 93       	push	r29
+  bc:	00 d0       	rcall	.+0      	; 0xbe <Button_readState+0x12>
+  be:	00 d0       	rcall	.+0      	; 0xc0 <Button_readState+0x14>
+  c0:	cd b7       	in	r28, 0x3d	; 61
+  c2:	de b7       	in	r29, 0x3e	; 62
+  c4:	8c 01       	movw	r16, r24
+	/* Time since the millis timer started */
+	millis_t currentMillis = Millis_get() ;
+  c6:	0e 94 47 02 	call	0x48e	; 0x48e <Millis_get>
+  ca:	69 83       	std	Y+1, r22	; 0x01
+  cc:	7a 83       	std	Y+2, r23	; 0x02
+  ce:	8b 83       	std	Y+3, r24	; 0x03
+  d0:	9c 83       	std	Y+4, r25	; 0x04
+	
+	button->buttonPressState =NoAction ;
+  d2:	f8 01       	movw	r30, r16
+  d4:	11 82       	std	Z+1, r1	; 0x01
+	/* Check for debouncing  */
+	if(currentMillis - button->lastReadingTime > successiveReadingInterval) {
+  d6:	89 81       	ldd	r24, Y+1	; 0x01
+  d8:	9a 81       	ldd	r25, Y+2	; 0x02
+  da:	ab 81       	ldd	r26, Y+3	; 0x03
+  dc:	bc 81       	ldd	r27, Y+4	; 0x04
+  de:	40 85       	ldd	r20, Z+8	; 0x08
+  e0:	51 85       	ldd	r21, Z+9	; 0x09
+  e2:	62 85       	ldd	r22, Z+10	; 0x0a
+  e4:	73 85       	ldd	r23, Z+11	; 0x0b
+  e6:	84 1b       	sub	r24, r20
+  e8:	95 0b       	sbc	r25, r21
+  ea:	a6 0b       	sbc	r26, r22
+  ec:	b7 0b       	sbc	r27, r23
+  ee:	c3 97       	sbiw	r24, 0x33	; 51
+  f0:	a1 05       	cpc	r26, r1
+  f2:	b1 05       	cpc	r27, r1
+  f4:	08 f4       	brcc	.+2      	; 0xf8 <Button_readState+0x4c>
+  f6:	5a c0       	rjmp	.+180    	; 0x1ac <Button_readState+0x100>
+		
+		/*get the current button reading */
+		uint8_t buttonState = DIO_getPinValue(button->buttonPin);
+  f8:	80 81       	ld	r24, Z
+  fa:	0e 94 ab 01 	call	0x356	; 0x356 <DIO_getPinValue>
+
+		/*if the button was pressed for the first time and the button wasn't pressed for a long time */
+		if (buttonState == HIGH && button->lastButtonState  == LOW && !button->isLongPress) {
+  fe:	81 30       	cpi	r24, 0x01	; 1
+ 100:	91 f4       	brne	.+36     	; 0x126 <Button_readState+0x7a>
+ 102:	f8 01       	movw	r30, r16
+ 104:	92 81       	ldd	r25, Z+2	; 0x02
+ 106:	91 11       	cpse	r25, r1
+ 108:	0e c0       	rjmp	.+28     	; 0x126 <Button_readState+0x7a>
+ 10a:	93 81       	ldd	r25, Z+3	; 0x03
+ 10c:	91 11       	cpse	r25, r1
+ 10e:	0b c0       	rjmp	.+22     	; 0x126 <Button_readState+0x7a>
+			button->buttonPressTime = currentMillis;
+ 110:	49 81       	ldd	r20, Y+1	; 0x01
+ 112:	5a 81       	ldd	r21, Y+2	; 0x02
+ 114:	6b 81       	ldd	r22, Y+3	; 0x03
+ 116:	7c 81       	ldd	r23, Y+4	; 0x04
+ 118:	44 83       	std	Z+4, r20	; 0x04
+ 11a:	55 83       	std	Z+5, r21	; 0x05
+ 11c:	66 83       	std	Z+6, r22	; 0x06
+ 11e:	77 83       	std	Z+7, r23	; 0x07
+			button->lastButtonState  = HIGH;
+ 120:	91 e0       	ldi	r25, 0x01	; 1
+ 122:	92 83       	std	Z+2, r25	; 0x02
+			button->buttonPressState = Pressing ;
+ 124:	91 83       	std	Z+1, r25	; 0x01
+		}
+
+		// get how long the button has been pressed
+		button->buttonPressedTime = currentMillis - button->buttonPressTime;
+ 126:	49 81       	ldd	r20, Y+1	; 0x01
+ 128:	5a 81       	ldd	r21, Y+2	; 0x02
+ 12a:	6b 81       	ldd	r22, Y+3	; 0x03
+ 12c:	7c 81       	ldd	r23, Y+4	; 0x04
+ 12e:	f8 01       	movw	r30, r16
+ 130:	c4 80       	ldd	r12, Z+4	; 0x04
+ 132:	d5 80       	ldd	r13, Z+5	; 0x05
+ 134:	e6 80       	ldd	r14, Z+6	; 0x06
+ 136:	f7 80       	ldd	r15, Z+7	; 0x07
+ 138:	4c 19       	sub	r20, r12
+ 13a:	5d 09       	sbc	r21, r13
+ 13c:	6e 09       	sbc	r22, r14
+ 13e:	7f 09       	sbc	r23, r15
+ 140:	44 87       	std	Z+12, r20	; 0x0c
+ 142:	55 87       	std	Z+13, r21	; 0x0d
+ 144:	66 87       	std	Z+14, r22	; 0x0e
+ 146:	77 87       	std	Z+15, r23	; 0x0f
+
+		/* if the button is pressed and button pressed time >= the long press interval (1 s) */
+		if (buttonState == HIGH && !button->isLongPress && button->buttonPressedTime >= isLongPressInterval) {
+ 148:	81 30       	cpi	r24, 0x01	; 1
+ 14a:	89 f4       	brne	.+34     	; 0x16e <Button_readState+0xc2>
+ 14c:	93 81       	ldd	r25, Z+3	; 0x03
+ 14e:	91 11       	cpse	r25, r1
+ 150:	0e c0       	rjmp	.+28     	; 0x16e <Button_readState+0xc2>
+ 152:	44 85       	ldd	r20, Z+12	; 0x0c
+ 154:	55 85       	ldd	r21, Z+13	; 0x0d
+ 156:	66 85       	ldd	r22, Z+14	; 0x0e
+ 158:	77 85       	ldd	r23, Z+15	; 0x0f
+ 15a:	48 3e       	cpi	r20, 0xE8	; 232
+ 15c:	53 40       	sbci	r21, 0x03	; 3
+ 15e:	61 05       	cpc	r22, r1
+ 160:	71 05       	cpc	r23, r1
+ 162:	28 f0       	brcs	.+10     	; 0x16e <Button_readState+0xc2>
+			/* set the button long press flag */
+			button->isLongPress = 1;
+ 164:	91 e0       	ldi	r25, 0x01	; 1
+ 166:	f8 01       	movw	r30, r16
+ 168:	93 83       	std	Z+3, r25	; 0x03
+			/* set button pressed state to be a long press*/
+			button->buttonPressState = LongPress;
+ 16a:	94 e0       	ldi	r25, 0x04	; 4
+ 16c:	91 83       	std	Z+1, r25	; 0x01
+		}
+		
+		/* if the button current state was low and last was high the button is released */
+		if (buttonState == LOW && button->lastButtonState  == HIGH) {
+ 16e:	81 11       	cpse	r24, r1
+ 170:	14 c0       	rjmp	.+40     	; 0x19a <Button_readState+0xee>
+ 172:	f8 01       	movw	r30, r16
+ 174:	82 81       	ldd	r24, Z+2	; 0x02
+ 176:	81 30       	cpi	r24, 0x01	; 1
+ 178:	81 f4       	brne	.+32     	; 0x19a <Button_readState+0xee>
+			
+			/*rest last button state */
+			button->lastButtonState  = LOW;
+ 17a:	12 82       	std	Z+2, r1	; 0x02
+			
+			/*rest long press flag */
+			button->isLongPress = 0;
+ 17c:	13 82       	std	Z+3, r1	; 0x03
+			
+			/* set button pressed state to be released */
+			button->buttonPressState = Released;
+ 17e:	82 e0       	ldi	r24, 0x02	; 2
+ 180:	81 83       	std	Z+1, r24	; 0x01
+			/*if the button is released before the long press interval then the button press is a short press */
+			if (button->buttonPressedTime < isLongPressInterval) {
+ 182:	84 85       	ldd	r24, Z+12	; 0x0c
+ 184:	95 85       	ldd	r25, Z+13	; 0x0d
+ 186:	a6 85       	ldd	r26, Z+14	; 0x0e
+ 188:	b7 85       	ldd	r27, Z+15	; 0x0f
+ 18a:	88 3e       	cpi	r24, 0xE8	; 232
+ 18c:	93 40       	sbci	r25, 0x03	; 3
+ 18e:	a1 05       	cpc	r26, r1
+ 190:	b1 05       	cpc	r27, r1
+ 192:	18 f4       	brcc	.+6      	; 0x19a <Button_readState+0xee>
+				button->buttonPressState = ShortPress;
+ 194:	83 e0       	ldi	r24, 0x03	; 3
+ 196:	f8 01       	movw	r30, r16
+ 198:	81 83       	std	Z+1, r24	; 0x01
+			}
+		}
+		
+		/*set the last time to the current time to get to the next iteration */
+		button->lastReadingTime = currentMillis;
+ 19a:	89 81       	ldd	r24, Y+1	; 0x01
+ 19c:	9a 81       	ldd	r25, Y+2	; 0x02
+ 19e:	ab 81       	ldd	r26, Y+3	; 0x03
+ 1a0:	bc 81       	ldd	r27, Y+4	; 0x04
+ 1a2:	f8 01       	movw	r30, r16
+ 1a4:	80 87       	std	Z+8, r24	; 0x08
+ 1a6:	91 87       	std	Z+9, r25	; 0x09
+ 1a8:	a2 87       	std	Z+10, r26	; 0x0a
+ 1aa:	b3 87       	std	Z+11, r27	; 0x0b
+	}
+
+}
+ 1ac:	0f 90       	pop	r0
+ 1ae:	0f 90       	pop	r0
+ 1b0:	0f 90       	pop	r0
+ 1b2:	0f 90       	pop	r0
+ 1b4:	df 91       	pop	r29
+ 1b6:	cf 91       	pop	r28
+ 1b8:	1f 91       	pop	r17
+ 1ba:	0f 91       	pop	r16
+ 1bc:	ff 90       	pop	r15
+ 1be:	ef 90       	pop	r14
+ 1c0:	df 90       	pop	r13
+ 1c2:	cf 90       	pop	r12
+ 1c4:	08 95       	ret
+
+000001c6 <DIO_setPinDirection>:
+ * @param pinnum pin name
+ * @return uint8_t pin number 
+ */
+inline static uint8_t getPinNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    pinnum     ; 
+ 1c6:	88 30       	cpi	r24, 0x08	; 8
+ 1c8:	70 f0       	brcs	.+28     	; 0x1e6 <DIO_setPinDirection+0x20>
+    else if (pinnum>=8  && pinnum<=15) return   (pinnum-8)  ; 
+ 1ca:	28 ef       	ldi	r18, 0xF8	; 248
+ 1cc:	28 0f       	add	r18, r24
+ 1ce:	28 30       	cpi	r18, 0x08	; 8
+ 1d0:	58 f0       	brcs	.+22     	; 0x1e8 <DIO_setPinDirection+0x22>
+    else if (pinnum>=16 && pinnum<=23) return   (pinnum-16) ;
+ 1d2:	20 ef       	ldi	r18, 0xF0	; 240
+ 1d4:	28 0f       	add	r18, r24
+ 1d6:	28 30       	cpi	r18, 0x08	; 8
+ 1d8:	38 f0       	brcs	.+14     	; 0x1e8 <DIO_setPinDirection+0x22>
+    else if (pinnum>=24 && pinnum<=31) return   (pinnum-24) ;
+ 1da:	28 ee       	ldi	r18, 0xE8	; 232
+ 1dc:	28 0f       	add	r18, r24
+ 1de:	28 30       	cpi	r18, 0x08	; 8
+ 1e0:	18 f0       	brcs	.+6      	; 0x1e8 <DIO_setPinDirection+0x22>
+	return NC ; 
+ 1e2:	2f ef       	ldi	r18, 0xFF	; 255
+ 1e4:	01 c0       	rjmp	.+2      	; 0x1e8 <DIO_setPinDirection+0x22>
+ * @param pinnum pin name
+ * @return uint8_t pin number 
+ */
+inline static uint8_t getPinNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    pinnum     ; 
+ 1e6:	28 2f       	mov	r18, r24
+ * @param pinnum pin name
+ * @return uint8_t port number 
+ */
+inline static uint8_t getPortNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    PORTA  ; 
+ 1e8:	88 30       	cpi	r24, 0x08	; 8
+ 1ea:	68 f0       	brcs	.+26     	; 0x206 <DIO_setPinDirection+0x40>
+    else if (pinnum>=8  && pinnum<=15) return    PORTB  ; 
+ 1ec:	98 ef       	ldi	r25, 0xF8	; 248
+ 1ee:	98 0f       	add	r25, r24
+ 1f0:	98 30       	cpi	r25, 0x08	; 8
+ 1f2:	58 f0       	brcs	.+22     	; 0x20a <DIO_setPinDirection+0x44>
+    else if (pinnum>=16 && pinnum<=23) return    PORTC  ;
+ 1f4:	90 ef       	ldi	r25, 0xF0	; 240
+ 1f6:	98 0f       	add	r25, r24
+ 1f8:	98 30       	cpi	r25, 0x08	; 8
+ 1fa:	48 f0       	brcs	.+18     	; 0x20e <DIO_setPinDirection+0x48>
+    else if (pinnum>=24 && pinnum<=31) return    PORTD  ;
+ 1fc:	88 51       	subi	r24, 0x18	; 24
+ 1fe:	88 30       	cpi	r24, 0x08	; 8
+ 200:	40 f4       	brcc	.+16     	; 0x212 <DIO_setPinDirection+0x4c>
+ 202:	83 e0       	ldi	r24, 0x03	; 3
+ 204:	07 c0       	rjmp	.+14     	; 0x214 <DIO_setPinDirection+0x4e>
+ * @param pinnum pin name
+ * @return uint8_t port number 
+ */
+inline static uint8_t getPortNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    PORTA  ; 
+ 206:	80 e0       	ldi	r24, 0x00	; 0
+ 208:	05 c0       	rjmp	.+10     	; 0x214 <DIO_setPinDirection+0x4e>
+    else if (pinnum>=8  && pinnum<=15) return    PORTB  ; 
+ 20a:	81 e0       	ldi	r24, 0x01	; 1
+ 20c:	03 c0       	rjmp	.+6      	; 0x214 <DIO_setPinDirection+0x4e>
+    else if (pinnum>=16 && pinnum<=23) return    PORTC  ;
+ 20e:	82 e0       	ldi	r24, 0x02	; 2
+ 210:	01 c0       	rjmp	.+2      	; 0x214 <DIO_setPinDirection+0x4e>
+    else if (pinnum>=24 && pinnum<=31) return    PORTD  ;
+	return NC ;
+ 212:	8f ef       	ldi	r24, 0xFF	; 255
+{
+	
+    /* get pin number and port number */
+    uint8_t pin = getPinNumber(pinNum) , port = getPortNumber(pinNum) ;
+	/* select DDRX Register */
+	volatile uint8_t  * DDRX =  (DIO_Registers[port][1]) ;
+ 214:	90 e0       	ldi	r25, 0x00	; 0
+ 216:	fc 01       	movw	r30, r24
+ 218:	ee 0f       	add	r30, r30
+ 21a:	ff 1f       	adc	r31, r31
+ 21c:	df 01       	movw	r26, r30
+ 21e:	a8 0f       	add	r26, r24
+ 220:	b9 1f       	adc	r27, r25
+ 222:	aa 0f       	add	r26, r26
+ 224:	bb 1f       	adc	r27, r27
+ 226:	a0 5a       	subi	r26, 0xA0	; 160
+ 228:	bf 4f       	sbci	r27, 0xFF	; 255
+ 22a:	12 96       	adiw	r26, 0x02	; 2
+ 22c:	0d 90       	ld	r0, X+
+ 22e:	bc 91       	ld	r27, X
+ 230:	a0 2d       	mov	r26, r0
+	/* select PORTX Register */ 
+	volatile uint8_t  * PORTX = (DIO_Registers[port][0]) ;
+ 232:	e8 0f       	add	r30, r24
+ 234:	f9 1f       	adc	r31, r25
+ 236:	ee 0f       	add	r30, r30
+ 238:	ff 1f       	adc	r31, r31
+ 23a:	e0 5a       	subi	r30, 0xA0	; 160
+ 23c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 23e:	01 90       	ld	r0, Z+
+ 240:	f0 81       	ld	r31, Z
+ 242:	e0 2d       	mov	r30, r0
+    switch (pinDirection)
+ 244:	61 30       	cpi	r22, 0x01	; 1
+ 246:	81 f0       	breq	.+32     	; 0x268 <DIO_setPinDirection+0xa2>
+ 248:	18 f0       	brcs	.+6      	; 0x250 <DIO_setPinDirection+0x8a>
+ 24a:	62 30       	cpi	r22, 0x02	; 2
+ 24c:	c1 f0       	breq	.+48     	; 0x27e <DIO_setPinDirection+0xb8>
+ 24e:	08 95       	ret
+    {
+    case INPUT:
+        /* set DDRX to 0 to set as input  */
+        clearBit((*DDRX),pin) ;
+ 250:	3c 91       	ld	r19, X
+ 252:	81 e0       	ldi	r24, 0x01	; 1
+ 254:	90 e0       	ldi	r25, 0x00	; 0
+ 256:	02 c0       	rjmp	.+4      	; 0x25c <DIO_setPinDirection+0x96>
+ 258:	88 0f       	add	r24, r24
+ 25a:	99 1f       	adc	r25, r25
+ 25c:	2a 95       	dec	r18
+ 25e:	e2 f7       	brpl	.-8      	; 0x258 <DIO_setPinDirection+0x92>
+ 260:	80 95       	com	r24
+ 262:	83 23       	and	r24, r19
+ 264:	8c 93       	st	X, r24
+        break;
+ 266:	08 95       	ret
+    case OUTPUT:
+        /* set PORTX to 1 to set as output */
+        setBit((*DDRX),pin) ;
+ 268:	3c 91       	ld	r19, X
+ 26a:	81 e0       	ldi	r24, 0x01	; 1
+ 26c:	90 e0       	ldi	r25, 0x00	; 0
+ 26e:	02 c0       	rjmp	.+4      	; 0x274 <DIO_setPinDirection+0xae>
+ 270:	88 0f       	add	r24, r24
+ 272:	99 1f       	adc	r25, r25
+ 274:	2a 95       	dec	r18
+ 276:	e2 f7       	brpl	.-8      	; 0x270 <DIO_setPinDirection+0xaa>
+ 278:	83 2b       	or	r24, r19
+ 27a:	8c 93       	st	X, r24
+        break;
+ 27c:	08 95       	ret
+    case INPUT_PULLUP:
+        /* set PORTX to 1 to active the pull up resistor */
+        setBit((*PORTX),pin) ;  
+ 27e:	30 81       	ld	r19, Z
+ 280:	81 e0       	ldi	r24, 0x01	; 1
+ 282:	90 e0       	ldi	r25, 0x00	; 0
+ 284:	02 c0       	rjmp	.+4      	; 0x28a <DIO_setPinDirection+0xc4>
+ 286:	88 0f       	add	r24, r24
+ 288:	99 1f       	adc	r25, r25
+ 28a:	2a 95       	dec	r18
+ 28c:	e2 f7       	brpl	.-8      	; 0x286 <DIO_setPinDirection+0xc0>
+ 28e:	93 2f       	mov	r25, r19
+ 290:	98 2b       	or	r25, r24
+ 292:	90 83       	st	Z, r25
+        /* set DDRX to 0 to set as input  */
+        clearBit((*DDRX),pin) ;
+ 294:	9c 91       	ld	r25, X
+ 296:	80 95       	com	r24
+ 298:	89 23       	and	r24, r25
+ 29a:	8c 93       	st	X, r24
+ 29c:	08 95       	ret
+
+0000029e <DIO_setPinValue>:
+ * @param pinnum pin name
+ * @return uint8_t pin number 
+ */
+inline static uint8_t getPinNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    pinnum     ; 
+ 29e:	88 30       	cpi	r24, 0x08	; 8
+ 2a0:	70 f0       	brcs	.+28     	; 0x2be <DIO_setPinValue+0x20>
+    else if (pinnum>=8  && pinnum<=15) return   (pinnum-8)  ; 
+ 2a2:	28 ef       	ldi	r18, 0xF8	; 248
+ 2a4:	28 0f       	add	r18, r24
+ 2a6:	28 30       	cpi	r18, 0x08	; 8
+ 2a8:	58 f0       	brcs	.+22     	; 0x2c0 <DIO_setPinValue+0x22>
+    else if (pinnum>=16 && pinnum<=23) return   (pinnum-16) ;
+ 2aa:	20 ef       	ldi	r18, 0xF0	; 240
+ 2ac:	28 0f       	add	r18, r24
+ 2ae:	28 30       	cpi	r18, 0x08	; 8
+ 2b0:	38 f0       	brcs	.+14     	; 0x2c0 <DIO_setPinValue+0x22>
+    else if (pinnum>=24 && pinnum<=31) return   (pinnum-24) ;
+ 2b2:	28 ee       	ldi	r18, 0xE8	; 232
+ 2b4:	28 0f       	add	r18, r24
+ 2b6:	28 30       	cpi	r18, 0x08	; 8
+ 2b8:	18 f0       	brcs	.+6      	; 0x2c0 <DIO_setPinValue+0x22>
+	return NC ; 
+ 2ba:	2f ef       	ldi	r18, 0xFF	; 255
+ 2bc:	01 c0       	rjmp	.+2      	; 0x2c0 <DIO_setPinValue+0x22>
+ * @param pinnum pin name
+ * @return uint8_t pin number 
+ */
+inline static uint8_t getPinNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    pinnum     ; 
+ 2be:	28 2f       	mov	r18, r24
+ * @param pinnum pin name
+ * @return uint8_t port number 
+ */
+inline static uint8_t getPortNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    PORTA  ; 
+ 2c0:	88 30       	cpi	r24, 0x08	; 8
+ 2c2:	68 f0       	brcs	.+26     	; 0x2de <DIO_setPinValue+0x40>
+    else if (pinnum>=8  && pinnum<=15) return    PORTB  ; 
+ 2c4:	98 ef       	ldi	r25, 0xF8	; 248
+ 2c6:	98 0f       	add	r25, r24
+ 2c8:	98 30       	cpi	r25, 0x08	; 8
+ 2ca:	58 f0       	brcs	.+22     	; 0x2e2 <DIO_setPinValue+0x44>
+    else if (pinnum>=16 && pinnum<=23) return    PORTC  ;
+ 2cc:	90 ef       	ldi	r25, 0xF0	; 240
+ 2ce:	98 0f       	add	r25, r24
+ 2d0:	98 30       	cpi	r25, 0x08	; 8
+ 2d2:	48 f0       	brcs	.+18     	; 0x2e6 <DIO_setPinValue+0x48>
+    else if (pinnum>=24 && pinnum<=31) return    PORTD  ;
+ 2d4:	88 51       	subi	r24, 0x18	; 24
+ 2d6:	88 30       	cpi	r24, 0x08	; 8
+ 2d8:	40 f4       	brcc	.+16     	; 0x2ea <DIO_setPinValue+0x4c>
+ 2da:	83 e0       	ldi	r24, 0x03	; 3
+ 2dc:	07 c0       	rjmp	.+14     	; 0x2ec <DIO_setPinValue+0x4e>
+ * @param pinnum pin name
+ * @return uint8_t port number 
+ */
+inline static uint8_t getPortNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    PORTA  ; 
+ 2de:	80 e0       	ldi	r24, 0x00	; 0
+ 2e0:	05 c0       	rjmp	.+10     	; 0x2ec <DIO_setPinValue+0x4e>
+    else if (pinnum>=8  && pinnum<=15) return    PORTB  ; 
+ 2e2:	81 e0       	ldi	r24, 0x01	; 1
+ 2e4:	03 c0       	rjmp	.+6      	; 0x2ec <DIO_setPinValue+0x4e>
+    else if (pinnum>=16 && pinnum<=23) return    PORTC  ;
+ 2e6:	82 e0       	ldi	r24, 0x02	; 2
+ 2e8:	01 c0       	rjmp	.+2      	; 0x2ec <DIO_setPinValue+0x4e>
+    else if (pinnum>=24 && pinnum<=31) return    PORTD  ;
+	return NC ;
+ 2ea:	8f ef       	ldi	r24, 0xFF	; 255
+void DIO_setPinValue(EN_PinNumber_t pinNum, EN_Values_t value) 
+{
+    /* get pin number and port number */
+    uint8_t pin = getPinNumber(pinNum) , port = getPortNumber(pinNum) ;
+	/* select PORTX Register */
+   	volatile uint8_t  * PORTX = (DIO_Registers[port][0]) ;
+ 2ec:	90 e0       	ldi	r25, 0x00	; 0
+ 2ee:	fc 01       	movw	r30, r24
+ 2f0:	ee 0f       	add	r30, r30
+ 2f2:	ff 1f       	adc	r31, r31
+ 2f4:	e8 0f       	add	r30, r24
+ 2f6:	f9 1f       	adc	r31, r25
+ 2f8:	ee 0f       	add	r30, r30
+ 2fa:	ff 1f       	adc	r31, r31
+ 2fc:	e0 5a       	subi	r30, 0xA0	; 160
+ 2fe:	ff 4f       	sbci	r31, 0xFF	; 255
+ 300:	01 90       	ld	r0, Z+
+ 302:	f0 81       	ld	r31, Z
+ 304:	e0 2d       	mov	r30, r0
+    switch (value)
+ 306:	61 30       	cpi	r22, 0x01	; 1
+ 308:	81 f0       	breq	.+32     	; 0x32a <DIO_setPinValue+0x8c>
+ 30a:	18 f0       	brcs	.+6      	; 0x312 <DIO_setPinValue+0x74>
+ 30c:	62 30       	cpi	r22, 0x02	; 2
+ 30e:	c1 f0       	breq	.+48     	; 0x340 <DIO_setPinValue+0xa2>
+ 310:	08 95       	ret
+    {
+        
+    case LOW:
+        /* set the selected pin to LOW */
+       clearBit((*PORTX),pin) ;
+ 312:	30 81       	ld	r19, Z
+ 314:	81 e0       	ldi	r24, 0x01	; 1
+ 316:	90 e0       	ldi	r25, 0x00	; 0
+ 318:	02 c0       	rjmp	.+4      	; 0x31e <DIO_setPinValue+0x80>
+ 31a:	88 0f       	add	r24, r24
+ 31c:	99 1f       	adc	r25, r25
+ 31e:	2a 95       	dec	r18
+ 320:	e2 f7       	brpl	.-8      	; 0x31a <DIO_setPinValue+0x7c>
+ 322:	80 95       	com	r24
+ 324:	83 23       	and	r24, r19
+ 326:	80 83       	st	Z, r24
+        break;    
+ 328:	08 95       	ret
+    case HIGH:
+        /* set the selected pin to HIGH */
+        setBit((*PORTX),pin) ;
+ 32a:	30 81       	ld	r19, Z
+ 32c:	81 e0       	ldi	r24, 0x01	; 1
+ 32e:	90 e0       	ldi	r25, 0x00	; 0
+ 330:	02 c0       	rjmp	.+4      	; 0x336 <DIO_setPinValue+0x98>
+ 332:	88 0f       	add	r24, r24
+ 334:	99 1f       	adc	r25, r25
+ 336:	2a 95       	dec	r18
+ 338:	e2 f7       	brpl	.-8      	; 0x332 <DIO_setPinValue+0x94>
+ 33a:	83 2b       	or	r24, r19
+ 33c:	80 83       	st	Z, r24
+        break;
+ 33e:	08 95       	ret
+    case TOGGLE:
+        /*TOGGLE the selected pin */
+        toggleBit((*PORTX),pin) ;
+ 340:	30 81       	ld	r19, Z
+ 342:	81 e0       	ldi	r24, 0x01	; 1
+ 344:	90 e0       	ldi	r25, 0x00	; 0
+ 346:	02 c0       	rjmp	.+4      	; 0x34c <DIO_setPinValue+0xae>
+ 348:	88 0f       	add	r24, r24
+ 34a:	99 1f       	adc	r25, r25
+ 34c:	2a 95       	dec	r18
+ 34e:	e2 f7       	brpl	.-8      	; 0x348 <DIO_setPinValue+0xaa>
+ 350:	83 27       	eor	r24, r19
+ 352:	80 83       	st	Z, r24
+ 354:	08 95       	ret
+
+00000356 <DIO_getPinValue>:
+ * @param pinnum pin name
+ * @return uint8_t pin number 
+ */
+inline static uint8_t getPinNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    pinnum     ; 
+ 356:	88 30       	cpi	r24, 0x08	; 8
+ 358:	70 f0       	brcs	.+28     	; 0x376 <DIO_getPinValue+0x20>
+    else if (pinnum>=8  && pinnum<=15) return   (pinnum-8)  ; 
+ 35a:	28 ef       	ldi	r18, 0xF8	; 248
+ 35c:	28 0f       	add	r18, r24
+ 35e:	28 30       	cpi	r18, 0x08	; 8
+ 360:	58 f0       	brcs	.+22     	; 0x378 <DIO_getPinValue+0x22>
+    else if (pinnum>=16 && pinnum<=23) return   (pinnum-16) ;
+ 362:	20 ef       	ldi	r18, 0xF0	; 240
+ 364:	28 0f       	add	r18, r24
+ 366:	28 30       	cpi	r18, 0x08	; 8
+ 368:	38 f0       	brcs	.+14     	; 0x378 <DIO_getPinValue+0x22>
+    else if (pinnum>=24 && pinnum<=31) return   (pinnum-24) ;
+ 36a:	28 ee       	ldi	r18, 0xE8	; 232
+ 36c:	28 0f       	add	r18, r24
+ 36e:	28 30       	cpi	r18, 0x08	; 8
+ 370:	18 f0       	brcs	.+6      	; 0x378 <DIO_getPinValue+0x22>
+	return NC ; 
+ 372:	2f ef       	ldi	r18, 0xFF	; 255
+ 374:	01 c0       	rjmp	.+2      	; 0x378 <DIO_getPinValue+0x22>
+ * @param pinnum pin name
+ * @return uint8_t pin number 
+ */
+inline static uint8_t getPinNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    pinnum     ; 
+ 376:	28 2f       	mov	r18, r24
+ * @param pinnum pin name
+ * @return uint8_t port number 
+ */
+inline static uint8_t getPortNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    PORTA  ; 
+ 378:	88 30       	cpi	r24, 0x08	; 8
+ 37a:	68 f0       	brcs	.+26     	; 0x396 <DIO_getPinValue+0x40>
+    else if (pinnum>=8  && pinnum<=15) return    PORTB  ; 
+ 37c:	98 ef       	ldi	r25, 0xF8	; 248
+ 37e:	98 0f       	add	r25, r24
+ 380:	98 30       	cpi	r25, 0x08	; 8
+ 382:	58 f0       	brcs	.+22     	; 0x39a <DIO_getPinValue+0x44>
+    else if (pinnum>=16 && pinnum<=23) return    PORTC  ;
+ 384:	90 ef       	ldi	r25, 0xF0	; 240
+ 386:	98 0f       	add	r25, r24
+ 388:	98 30       	cpi	r25, 0x08	; 8
+ 38a:	48 f0       	brcs	.+18     	; 0x39e <DIO_getPinValue+0x48>
+    else if (pinnum>=24 && pinnum<=31) return    PORTD  ;
+ 38c:	88 51       	subi	r24, 0x18	; 24
+ 38e:	88 30       	cpi	r24, 0x08	; 8
+ 390:	40 f4       	brcc	.+16     	; 0x3a2 <DIO_getPinValue+0x4c>
+ 392:	83 e0       	ldi	r24, 0x03	; 3
+ 394:	07 c0       	rjmp	.+14     	; 0x3a4 <DIO_getPinValue+0x4e>
+ * @param pinnum pin name
+ * @return uint8_t port number 
+ */
+inline static uint8_t getPortNumber(EN_PinNumber_t pinnum)
+{
+    if(pinnum>=0 && pinnum<=7)         return    PORTA  ; 
+ 396:	80 e0       	ldi	r24, 0x00	; 0
+ 398:	05 c0       	rjmp	.+10     	; 0x3a4 <DIO_getPinValue+0x4e>
+    else if (pinnum>=8  && pinnum<=15) return    PORTB  ; 
+ 39a:	81 e0       	ldi	r24, 0x01	; 1
+ 39c:	03 c0       	rjmp	.+6      	; 0x3a4 <DIO_getPinValue+0x4e>
+    else if (pinnum>=16 && pinnum<=23) return    PORTC  ;
+ 39e:	82 e0       	ldi	r24, 0x02	; 2
+ 3a0:	01 c0       	rjmp	.+2      	; 0x3a4 <DIO_getPinValue+0x4e>
+    else if (pinnum>=24 && pinnum<=31) return    PORTD  ;
+	return NC ;
+ 3a2:	8f ef       	ldi	r24, 0xFF	; 255
+uint8_t DIO_getPinValue(EN_PinNumber_t pinNum) 
+{
+    /* get pin number and port number */
+    uint8_t pin = getPinNumber(pinNum) , port = getPortNumber(pinNum) ;
+	/* select PINX Register */ 
+	volatile uint8_t * PINX = (DIO_Registers[port][2]);
+ 3a4:	90 e0       	ldi	r25, 0x00	; 0
+ 3a6:	fc 01       	movw	r30, r24
+ 3a8:	ee 0f       	add	r30, r30
+ 3aa:	ff 1f       	adc	r31, r31
+ 3ac:	e8 0f       	add	r30, r24
+ 3ae:	f9 1f       	adc	r31, r25
+ 3b0:	ee 0f       	add	r30, r30
+ 3b2:	ff 1f       	adc	r31, r31
+ 3b4:	e0 5a       	subi	r30, 0xA0	; 160
+ 3b6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3b8:	04 80       	ldd	r0, Z+4	; 0x04
+ 3ba:	f5 81       	ldd	r31, Z+5	; 0x05
+ 3bc:	e0 2d       	mov	r30, r0
+   /* return pin value */
+    return getBit((*PINX) ,pin);
+ 3be:	80 81       	ld	r24, Z
+ 3c0:	90 e0       	ldi	r25, 0x00	; 0
+ 3c2:	02 c0       	rjmp	.+4      	; 0x3c8 <DIO_getPinValue+0x72>
+ 3c4:	95 95       	asr	r25
+ 3c6:	87 95       	ror	r24
+ 3c8:	2a 95       	dec	r18
+ 3ca:	e2 f7       	brpl	.-8      	; 0x3c4 <DIO_getPinValue+0x6e>
+}
+ 3cc:	81 70       	andi	r24, 0x01	; 1
+ 3ce:	08 95       	ret
+
+000003d0 <GIE_Enable>:
+
+#include "GIE_INT.h"
+#include "GIE_REG.h"
+
+
+inline void GIE_Enable(void)  {SREG |=  (1<<SREG_I) ;}
+ 3d0:	8f b7       	in	r24, 0x3f	; 63
+ 3d2:	80 68       	ori	r24, 0x80	; 128
+ 3d4:	8f bf       	out	0x3f, r24	; 63
+ 3d6:	08 95       	ret
+
+000003d8 <GIE_Disable>:
+
+ 3d8:	8f b7       	in	r24, 0x3f	; 63
+ 3da:	8f 77       	andi	r24, 0x7F	; 127
+ 3dc:	8f bf       	out	0x3f, r24	; 63
+ 3de:	08 95       	ret
+
+000003e0 <main>:
+#include "DIO/DIO_INT.h"
+#include "MILLIS/MILLIS_INT.h"
+#include "button/Button_INT.h"
+
+int main(void)
+{
+ 3e0:	cf 93       	push	r28
+ 3e2:	df 93       	push	r29
+ 3e4:	cd b7       	in	r28, 0x3d	; 61
+ 3e6:	de b7       	in	r29, 0x3e	; 62
+ 3e8:	60 97       	sbiw	r28, 0x10	; 16
+ 3ea:	0f b6       	in	r0, 0x3f	; 63
+ 3ec:	f8 94       	cli
+ 3ee:	de bf       	out	0x3e, r29	; 62
+ 3f0:	0f be       	out	0x3f, r0	; 63
+ 3f2:	cd bf       	out	0x3d, r28	; 61
+	ST_Button_t button1 ={.buttonPin= PB0} ; 
+ 3f4:	ce 01       	movw	r24, r28
+ 3f6:	01 96       	adiw	r24, 0x01	; 1
+ 3f8:	20 e1       	ldi	r18, 0x10	; 16
+ 3fa:	fc 01       	movw	r30, r24
+ 3fc:	11 92       	st	Z+, r1
+ 3fe:	2a 95       	dec	r18
+ 400:	e9 f7       	brne	.-6      	; 0x3fc <main+0x1c>
+ 402:	28 e0       	ldi	r18, 0x08	; 8
+ 404:	29 83       	std	Y+1, r18	; 0x01
+	Button_Init(&button1);
+ 406:	0e 94 49 00 	call	0x92	; 0x92 <Button_Init>
+	DIO_setPinDirection(PA0,OUTPUT) ;
+ 40a:	61 e0       	ldi	r22, 0x01	; 1
+ 40c:	80 e0       	ldi	r24, 0x00	; 0
+ 40e:	0e 94 e3 00 	call	0x1c6	; 0x1c6 <DIO_setPinDirection>
+	Millis_Init() ;
+ 412:	0e 94 36 02 	call	0x46c	; 0x46c <Millis_Init>
+    while (1) 
+    {
+		Button_readState(&button1) ; /*update button press state */
+ 416:	ce 01       	movw	r24, r28
+ 418:	01 96       	adiw	r24, 0x01	; 1
+ 41a:	0e 94 56 00 	call	0xac	; 0xac <Button_readState>
+		
+		if(button1.buttonPressState == ShortPress)
+ 41e:	8a 81       	ldd	r24, Y+2	; 0x02
+ 420:	83 30       	cpi	r24, 0x03	; 3
+ 422:	29 f4       	brne	.+10     	; 0x42e <__EEPROM_REGION_LENGTH__+0x2e>
+		{
+			DIO_setPinValue(PA0,HIGH) ;
+ 424:	61 e0       	ldi	r22, 0x01	; 1
+ 426:	80 e0       	ldi	r24, 0x00	; 0
+ 428:	0e 94 4f 01 	call	0x29e	; 0x29e <DIO_setPinValue>
+ 42c:	f4 cf       	rjmp	.-24     	; 0x416 <__EEPROM_REGION_LENGTH__+0x16>
+		}
+		else if(button1.buttonPressState == LongPress)
+ 42e:	84 30       	cpi	r24, 0x04	; 4
+ 430:	91 f7       	brne	.-28     	; 0x416 <__EEPROM_REGION_LENGTH__+0x16>
+		{
+			DIO_setPinValue(PA0,LOW) ;
+ 432:	60 e0       	ldi	r22, 0x00	; 0
+ 434:	80 e0       	ldi	r24, 0x00	; 0
+ 436:	0e 94 4f 01 	call	0x29e	; 0x29e <DIO_setPinValue>
+ 43a:	ed cf       	rjmp	.-38     	; 0x416 <__EEPROM_REGION_LENGTH__+0x16>
+
+0000043c <Millis_INC>:
+
+/* each timer overflow(timer ISR) */ 
+static void Millis_INC(void)
+{
+	/* set timer preload again */
+	Timer_SetOVFRegister(Selected_Timer,131);
+ 43c:	63 e8       	ldi	r22, 0x83	; 131
+ 43e:	81 e0       	ldi	r24, 0x01	; 1
+ 440:	0e 94 e3 02 	call	0x5c6	; 0x5c6 <Timer_SetOVFRegister>
+	/*increment the number of milliseconds passed */
+	millis++ ; 	
+ 444:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__data_end>
+ 448:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__data_end+0x1>
+ 44c:	a0 91 7a 00 	lds	r26, 0x007A	; 0x80007a <__data_end+0x2>
+ 450:	b0 91 7b 00 	lds	r27, 0x007B	; 0x80007b <__data_end+0x3>
+ 454:	01 96       	adiw	r24, 0x01	; 1
+ 456:	a1 1d       	adc	r26, r1
+ 458:	b1 1d       	adc	r27, r1
+ 45a:	80 93 78 00 	sts	0x0078, r24	; 0x800078 <__data_end>
+ 45e:	90 93 79 00 	sts	0x0079, r25	; 0x800079 <__data_end+0x1>
+ 462:	a0 93 7a 00 	sts	0x007A, r26	; 0x80007a <__data_end+0x2>
+ 466:	b0 93 7b 00 	sts	0x007B, r27	; 0x80007b <__data_end+0x3>
+ 46a:	08 95       	ret
+
+0000046c <Millis_Init>:
+}
+
+void Millis_Init(void) 
+{
+	/* global interrupts enable*/
+	GIE_Enable() ; 
+ 46c:	0e 94 e8 01 	call	0x3d0	; 0x3d0 <GIE_Enable>
+	/* set timer overflow callback (what happen when timer overflows */
+	Timer_SetOVF_Callback(Selected_Timer,&Millis_INC) ; 
+ 470:	6e e1       	ldi	r22, 0x1E	; 30
+ 472:	72 e0       	ldi	r23, 0x02	; 2
+ 474:	81 e0       	ldi	r24, 0x01	; 1
+ 476:	0e 94 c5 02 	call	0x58a	; 0x58a <Timer_SetOVF_Callback>
+	
+	/* set timer overflow register to  131 to achieve 1 ms in the next overflow*/
+	Timer_SetOVFRegister(Selected_Timer,131) ;
+ 47a:	63 e8       	ldi	r22, 0x83	; 131
+ 47c:	81 e0       	ldi	r24, 0x01	; 1
+ 47e:	0e 94 e3 02 	call	0x5c6	; 0x5c6 <Timer_SetOVFRegister>
+	
+	/* set timer prescaller and wave mode to be normal */
+	Timer_Init(Selected_Timer,prescaler8,Normal) ;
+ 482:	40 e0       	ldi	r20, 0x00	; 0
+ 484:	62 e0       	ldi	r22, 0x02	; 2
+ 486:	81 e0       	ldi	r24, 0x01	; 1
+ 488:	0e 94 b8 02 	call	0x570	; 0x570 <Timer_Init>
+ 48c:	08 95       	ret
+
+0000048e <Millis_get>:
+}
+
+millis_t Millis_get(void) 
+{
+ 48e:	cf 93       	push	r28
+ 490:	df 93       	push	r29
+ 492:	00 d0       	rcall	.+0      	; 0x494 <Millis_get+0x6>
+ 494:	00 d0       	rcall	.+0      	; 0x496 <Millis_get+0x8>
+ 496:	cd b7       	in	r28, 0x3d	; 61
+ 498:	de b7       	in	r29, 0x3e	; 62
+	/*disable all interrupts */ 
+	GIE_Disable() ; 
+ 49a:	0e 94 ec 01 	call	0x3d8	; 0x3d8 <GIE_Disable>
+	millis_t m = millis ; 
+ 49e:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__data_end>
+ 4a2:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__data_end+0x1>
+ 4a6:	a0 91 7a 00 	lds	r26, 0x007A	; 0x80007a <__data_end+0x2>
+ 4aa:	b0 91 7b 00 	lds	r27, 0x007B	; 0x80007b <__data_end+0x3>
+ 4ae:	89 83       	std	Y+1, r24	; 0x01
+ 4b0:	9a 83       	std	Y+2, r25	; 0x02
+ 4b2:	ab 83       	std	Y+3, r26	; 0x03
+ 4b4:	bc 83       	std	Y+4, r27	; 0x04
+	/* global interrupts enable */
+	GIE_Enable() ;
+ 4b6:	0e 94 e8 01 	call	0x3d0	; 0x3d0 <GIE_Enable>
+	return m ;
+ 4ba:	69 81       	ldd	r22, Y+1	; 0x01
+ 4bc:	7a 81       	ldd	r23, Y+2	; 0x02
+ 4be:	8b 81       	ldd	r24, Y+3	; 0x03
+ 4c0:	9c 81       	ldd	r25, Y+4	; 0x04
+ 4c2:	0f 90       	pop	r0
+ 4c4:	0f 90       	pop	r0
+ 4c6:	0f 90       	pop	r0
+ 4c8:	0f 90       	pop	r0
+ 4ca:	df 91       	pop	r29
+ 4cc:	cf 91       	pop	r28
+ 4ce:	08 95       	ret
+
+000004d0 <Timer_SetPrescaller>:
+	{
+	case TIMER0:
+		setBit(TIFR,TIFR_OCF0) ;
+		break;
+	case TIMER2:
+		 setBit(TIFR,TIFR_OCF2) ;
+ 4d0:	88 23       	and	r24, r24
+ 4d2:	19 f0       	breq	.+6      	; 0x4da <Timer_SetPrescaller+0xa>
+ 4d4:	81 30       	cpi	r24, 0x01	; 1
+ 4d6:	41 f0       	breq	.+16     	; 0x4e8 <Timer_SetPrescaller+0x18>
+ 4d8:	08 95       	ret
+ 4da:	83 b7       	in	r24, 0x33	; 51
+ 4dc:	88 7f       	andi	r24, 0xF8	; 248
+ 4de:	83 bf       	out	0x33, r24	; 51
+ 4e0:	83 b7       	in	r24, 0x33	; 51
+ 4e2:	68 2b       	or	r22, r24
+ 4e4:	63 bf       	out	0x33, r22	; 51
+ 4e6:	08 95       	ret
+ 4e8:	85 b5       	in	r24, 0x25	; 37
+ 4ea:	88 7f       	andi	r24, 0xF8	; 248
+ 4ec:	68 2b       	or	r22, r24
+ 4ee:	65 bd       	out	0x25, r22	; 37
+ 4f0:	08 95       	ret
+
+000004f2 <Timer_SetWaveMode>:
+ 4f2:	88 23       	and	r24, r24
+ 4f4:	19 f0       	breq	.+6      	; 0x4fc <Timer_SetWaveMode+0xa>
+ 4f6:	81 30       	cpi	r24, 0x01	; 1
+ 4f8:	f9 f0       	breq	.+62     	; 0x538 <Timer_SetWaveMode+0x46>
+ 4fa:	08 95       	ret
+ 4fc:	83 b7       	in	r24, 0x33	; 51
+ 4fe:	87 7b       	andi	r24, 0xB7	; 183
+ 500:	83 bf       	out	0x33, r24	; 51
+ 502:	83 b7       	in	r24, 0x33	; 51
+ 504:	a6 2f       	mov	r26, r22
+ 506:	a1 70       	andi	r26, 0x01	; 1
+ 508:	b0 e0       	ldi	r27, 0x00	; 0
+ 50a:	00 24       	eor	r0, r0
+ 50c:	b6 95       	lsr	r27
+ 50e:	a7 95       	ror	r26
+ 510:	07 94       	ror	r0
+ 512:	b6 95       	lsr	r27
+ 514:	a7 95       	ror	r26
+ 516:	07 94       	ror	r0
+ 518:	ba 2f       	mov	r27, r26
+ 51a:	a0 2d       	mov	r26, r0
+ 51c:	61 fb       	bst	r22, 1
+ 51e:	44 27       	eor	r20, r20
+ 520:	40 f9       	bld	r20, 0
+ 522:	50 e0       	ldi	r21, 0x00	; 0
+ 524:	44 0f       	add	r20, r20
+ 526:	55 1f       	adc	r21, r21
+ 528:	44 0f       	add	r20, r20
+ 52a:	55 1f       	adc	r21, r21
+ 52c:	44 0f       	add	r20, r20
+ 52e:	55 1f       	adc	r21, r21
+ 530:	4a 2b       	or	r20, r26
+ 532:	48 2b       	or	r20, r24
+ 534:	43 bf       	out	0x33, r20	; 51
+ 536:	08 95       	ret
+ 538:	85 b5       	in	r24, 0x25	; 37
+ 53a:	87 7b       	andi	r24, 0xB7	; 183
+ 53c:	e6 2f       	mov	r30, r22
+ 53e:	e1 70       	andi	r30, 0x01	; 1
+ 540:	f0 e0       	ldi	r31, 0x00	; 0
+ 542:	00 24       	eor	r0, r0
+ 544:	f6 95       	lsr	r31
+ 546:	e7 95       	ror	r30
+ 548:	07 94       	ror	r0
+ 54a:	f6 95       	lsr	r31
+ 54c:	e7 95       	ror	r30
+ 54e:	07 94       	ror	r0
+ 550:	fe 2f       	mov	r31, r30
+ 552:	e0 2d       	mov	r30, r0
+ 554:	61 fb       	bst	r22, 1
+ 556:	22 27       	eor	r18, r18
+ 558:	20 f9       	bld	r18, 0
+ 55a:	30 e0       	ldi	r19, 0x00	; 0
+ 55c:	22 0f       	add	r18, r18
+ 55e:	33 1f       	adc	r19, r19
+ 560:	22 0f       	add	r18, r18
+ 562:	33 1f       	adc	r19, r19
+ 564:	22 0f       	add	r18, r18
+ 566:	33 1f       	adc	r19, r19
+ 568:	2e 2b       	or	r18, r30
+ 56a:	28 2b       	or	r18, r24
+ 56c:	25 bd       	out	0x25, r18	; 37
+ 56e:	08 95       	ret
+
+00000570 <Timer_Init>:
+ 570:	cf 93       	push	r28
+ 572:	df 93       	push	r29
+ 574:	c8 2f       	mov	r28, r24
+ 576:	d4 2f       	mov	r29, r20
+ 578:	0e 94 68 02 	call	0x4d0	; 0x4d0 <Timer_SetPrescaller>
+ 57c:	6d 2f       	mov	r22, r29
+ 57e:	8c 2f       	mov	r24, r28
+ 580:	0e 94 79 02 	call	0x4f2	; 0x4f2 <Timer_SetWaveMode>
+ 584:	df 91       	pop	r29
+ 586:	cf 91       	pop	r28
+ 588:	08 95       	ret
+
+0000058a <Timer_SetOVF_Callback>:
+ 58a:	61 15       	cp	r22, r1
+ 58c:	71 05       	cpc	r23, r1
+ 58e:	d1 f0       	breq	.+52     	; 0x5c4 <Timer_SetOVF_Callback+0x3a>
+ 590:	88 23       	and	r24, r24
+ 592:	19 f0       	breq	.+6      	; 0x59a <Timer_SetOVF_Callback+0x10>
+ 594:	81 30       	cpi	r24, 0x01	; 1
+ 596:	61 f0       	breq	.+24     	; 0x5b0 <Timer_SetOVF_Callback+0x26>
+ 598:	08 95       	ret
+ 59a:	89 b7       	in	r24, 0x39	; 57
+ 59c:	81 60       	ori	r24, 0x01	; 1
+ 59e:	89 bf       	out	0x39, r24	; 57
+ 5a0:	89 b7       	in	r24, 0x39	; 57
+ 5a2:	8d 7f       	andi	r24, 0xFD	; 253
+ 5a4:	89 bf       	out	0x39, r24	; 57
+ 5a6:	70 93 81 00 	sts	0x0081, r23	; 0x800081 <TIMERS_NORMAL_ISR+0x1>
+ 5aa:	60 93 80 00 	sts	0x0080, r22	; 0x800080 <TIMERS_NORMAL_ISR>
+ 5ae:	08 95       	ret
+ 5b0:	89 b7       	in	r24, 0x39	; 57
+ 5b2:	80 64       	ori	r24, 0x40	; 64
+ 5b4:	89 bf       	out	0x39, r24	; 57
+ 5b6:	89 b7       	in	r24, 0x39	; 57
+ 5b8:	8f 77       	andi	r24, 0x7F	; 127
+ 5ba:	89 bf       	out	0x39, r24	; 57
+ 5bc:	70 93 83 00 	sts	0x0083, r23	; 0x800083 <TIMERS_NORMAL_ISR+0x3>
+ 5c0:	60 93 82 00 	sts	0x0082, r22	; 0x800082 <TIMERS_NORMAL_ISR+0x2>
+ 5c4:	08 95       	ret
+
+000005c6 <Timer_SetOVFRegister>:
+ 5c6:	88 23       	and	r24, r24
+ 5c8:	19 f0       	breq	.+6      	; 0x5d0 <Timer_SetOVFRegister+0xa>
+ 5ca:	81 30       	cpi	r24, 0x01	; 1
+ 5cc:	19 f0       	breq	.+6      	; 0x5d4 <Timer_SetOVFRegister+0xe>
+ 5ce:	08 95       	ret
+ 5d0:	62 bf       	out	0x32, r22	; 50
+ 5d2:	08 95       	ret
+ 5d4:	64 bd       	out	0x24, r22	; 36
+ 5d6:	08 95       	ret
+
+000005d8 <__vector_11>:
+}
+
+/* Timer0 Overflow ISR */
+void __vector_11 (void) __attribute__ ((signal,used)) ; 
+void __vector_11 (void) 
+{
+ 5d8:	1f 92       	push	r1
+ 5da:	0f 92       	push	r0
+ 5dc:	0f b6       	in	r0, 0x3f	; 63
+ 5de:	0f 92       	push	r0
+ 5e0:	11 24       	eor	r1, r1
+ 5e2:	2f 93       	push	r18
+ 5e4:	3f 93       	push	r19
+ 5e6:	4f 93       	push	r20
+ 5e8:	5f 93       	push	r21
+ 5ea:	6f 93       	push	r22
+ 5ec:	7f 93       	push	r23
+ 5ee:	8f 93       	push	r24
+ 5f0:	9f 93       	push	r25
+ 5f2:	af 93       	push	r26
+ 5f4:	bf 93       	push	r27
+ 5f6:	ef 93       	push	r30
+ 5f8:	ff 93       	push	r31
+    if(TIMERS_NORMAL_ISR[0] != ((void *)0))
+ 5fa:	e0 91 80 00 	lds	r30, 0x0080	; 0x800080 <TIMERS_NORMAL_ISR>
+ 5fe:	f0 91 81 00 	lds	r31, 0x0081	; 0x800081 <TIMERS_NORMAL_ISR+0x1>
+ 602:	30 97       	sbiw	r30, 0x00	; 0
+ 604:	09 f0       	breq	.+2      	; 0x608 <__vector_11+0x30>
+    {
+        TIMERS_NORMAL_ISR[0]() ;
+ 606:	09 95       	icall
+    }
+    else
+    {
+        /* do nothing */
+    }
+}
+ 608:	ff 91       	pop	r31
+ 60a:	ef 91       	pop	r30
+ 60c:	bf 91       	pop	r27
+ 60e:	af 91       	pop	r26
+ 610:	9f 91       	pop	r25
+ 612:	8f 91       	pop	r24
+ 614:	7f 91       	pop	r23
+ 616:	6f 91       	pop	r22
+ 618:	5f 91       	pop	r21
+ 61a:	4f 91       	pop	r20
+ 61c:	3f 91       	pop	r19
+ 61e:	2f 91       	pop	r18
+ 620:	0f 90       	pop	r0
+ 622:	0f be       	out	0x3f, r0	; 63
+ 624:	0f 90       	pop	r0
+ 626:	1f 90       	pop	r1
+ 628:	18 95       	reti
+
+0000062a <__vector_10>:
+
+/* Timer0 CompareMatch ISR */
+void __vector_10 (void) __attribute__ ((signal,used)) ; 
+void __vector_10 (void) 
+{
+ 62a:	1f 92       	push	r1
+ 62c:	0f 92       	push	r0
+ 62e:	0f b6       	in	r0, 0x3f	; 63
+ 630:	0f 92       	push	r0
+ 632:	11 24       	eor	r1, r1
+ 634:	2f 93       	push	r18
+ 636:	3f 93       	push	r19
+ 638:	4f 93       	push	r20
+ 63a:	5f 93       	push	r21
+ 63c:	6f 93       	push	r22
+ 63e:	7f 93       	push	r23
+ 640:	8f 93       	push	r24
+ 642:	9f 93       	push	r25
+ 644:	af 93       	push	r26
+ 646:	bf 93       	push	r27
+ 648:	ef 93       	push	r30
+ 64a:	ff 93       	push	r31
+    if(TIMERS_CTC_ISR[0] != ((void *)0))
+ 64c:	e0 91 7c 00 	lds	r30, 0x007C	; 0x80007c <TIMERS_CTC_ISR>
+ 650:	f0 91 7d 00 	lds	r31, 0x007D	; 0x80007d <TIMERS_CTC_ISR+0x1>
+ 654:	30 97       	sbiw	r30, 0x00	; 0
+ 656:	09 f0       	breq	.+2      	; 0x65a <__vector_10+0x30>
+    {
+        TIMERS_CTC_ISR[0]() ;
+ 658:	09 95       	icall
+    }
+    else
+    {
+        /* do nothing */
+    }
+}
+ 65a:	ff 91       	pop	r31
+ 65c:	ef 91       	pop	r30
+ 65e:	bf 91       	pop	r27
+ 660:	af 91       	pop	r26
+ 662:	9f 91       	pop	r25
+ 664:	8f 91       	pop	r24
+ 666:	7f 91       	pop	r23
+ 668:	6f 91       	pop	r22
+ 66a:	5f 91       	pop	r21
+ 66c:	4f 91       	pop	r20
+ 66e:	3f 91       	pop	r19
+ 670:	2f 91       	pop	r18
+ 672:	0f 90       	pop	r0
+ 674:	0f be       	out	0x3f, r0	; 63
+ 676:	0f 90       	pop	r0
+ 678:	1f 90       	pop	r1
+ 67a:	18 95       	reti
+
+0000067c <__vector_5>:
+
+/* Timer2 Overflow ISR */
+void __vector_5 (void) __attribute__ ((signal,used)) ; 
+void __vector_5 (void) 
+{
+ 67c:	1f 92       	push	r1
+ 67e:	0f 92       	push	r0
+ 680:	0f b6       	in	r0, 0x3f	; 63
+ 682:	0f 92       	push	r0
+ 684:	11 24       	eor	r1, r1
+ 686:	2f 93       	push	r18
+ 688:	3f 93       	push	r19
+ 68a:	4f 93       	push	r20
+ 68c:	5f 93       	push	r21
+ 68e:	6f 93       	push	r22
+ 690:	7f 93       	push	r23
+ 692:	8f 93       	push	r24
+ 694:	9f 93       	push	r25
+ 696:	af 93       	push	r26
+ 698:	bf 93       	push	r27
+ 69a:	ef 93       	push	r30
+ 69c:	ff 93       	push	r31
+    if(TIMERS_NORMAL_ISR[1] != ((void *)0))
+ 69e:	e0 91 82 00 	lds	r30, 0x0082	; 0x800082 <TIMERS_NORMAL_ISR+0x2>
+ 6a2:	f0 91 83 00 	lds	r31, 0x0083	; 0x800083 <TIMERS_NORMAL_ISR+0x3>
+ 6a6:	30 97       	sbiw	r30, 0x00	; 0
+ 6a8:	09 f0       	breq	.+2      	; 0x6ac <__vector_5+0x30>
+    {
+        TIMERS_NORMAL_ISR[1]() ;
+ 6aa:	09 95       	icall
+    }
+    else
+    {
+        /* do nothing */
+    }
+}
+ 6ac:	ff 91       	pop	r31
+ 6ae:	ef 91       	pop	r30
+ 6b0:	bf 91       	pop	r27
+ 6b2:	af 91       	pop	r26
+ 6b4:	9f 91       	pop	r25
+ 6b6:	8f 91       	pop	r24
+ 6b8:	7f 91       	pop	r23
+ 6ba:	6f 91       	pop	r22
+ 6bc:	5f 91       	pop	r21
+ 6be:	4f 91       	pop	r20
+ 6c0:	3f 91       	pop	r19
+ 6c2:	2f 91       	pop	r18
+ 6c4:	0f 90       	pop	r0
+ 6c6:	0f be       	out	0x3f, r0	; 63
+ 6c8:	0f 90       	pop	r0
+ 6ca:	1f 90       	pop	r1
+ 6cc:	18 95       	reti
+
+000006ce <__vector_4>:
+
+/* Timer2 CompareMatch ISR */
+void __vector_4 (void) __attribute__ ((signal,used)) ; 
+void __vector_4 (void) 
+{
+ 6ce:	1f 92       	push	r1
+ 6d0:	0f 92       	push	r0
+ 6d2:	0f b6       	in	r0, 0x3f	; 63
+ 6d4:	0f 92       	push	r0
+ 6d6:	11 24       	eor	r1, r1
+ 6d8:	2f 93       	push	r18
+ 6da:	3f 93       	push	r19
+ 6dc:	4f 93       	push	r20
+ 6de:	5f 93       	push	r21
+ 6e0:	6f 93       	push	r22
+ 6e2:	7f 93       	push	r23
+ 6e4:	8f 93       	push	r24
+ 6e6:	9f 93       	push	r25
+ 6e8:	af 93       	push	r26
+ 6ea:	bf 93       	push	r27
+ 6ec:	ef 93       	push	r30
+ 6ee:	ff 93       	push	r31
+    if(TIMERS_CTC_ISR[1] != ((void *)0))
+ 6f0:	e0 91 7e 00 	lds	r30, 0x007E	; 0x80007e <TIMERS_CTC_ISR+0x2>
+ 6f4:	f0 91 7f 00 	lds	r31, 0x007F	; 0x80007f <TIMERS_CTC_ISR+0x3>
+ 6f8:	30 97       	sbiw	r30, 0x00	; 0
+ 6fa:	09 f0       	breq	.+2      	; 0x6fe <__vector_4+0x30>
+    {
+        TIMERS_CTC_ISR[1]() ;
+ 6fc:	09 95       	icall
+    }
+    else
+    {
+        /* do nothing */
+    }
+}
+ 6fe:	ff 91       	pop	r31
+ 700:	ef 91       	pop	r30
+ 702:	bf 91       	pop	r27
+ 704:	af 91       	pop	r26
+ 706:	9f 91       	pop	r25
+ 708:	8f 91       	pop	r24
+ 70a:	7f 91       	pop	r23
+ 70c:	6f 91       	pop	r22
+ 70e:	5f 91       	pop	r21
+ 710:	4f 91       	pop	r20
+ 712:	3f 91       	pop	r19
+ 714:	2f 91       	pop	r18
+ 716:	0f 90       	pop	r0
+ 718:	0f be       	out	0x3f, r0	; 63
+ 71a:	0f 90       	pop	r0
+ 71c:	1f 90       	pop	r1
+ 71e:	18 95       	reti
+
+00000720 <_exit>:
+ 720:	f8 94       	cli
+
+00000722 <__stop_program>:
+ 722:	ff cf       	rjmp	.-2      	; 0x722 <__stop_program>
