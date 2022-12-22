@@ -25,7 +25,7 @@
 #endif
 
 /*selected timer for millisecond time tracking*/
-#define Selected_Timer (EN_Timers_t) TIMER2
+#define Selected_Timer (EN_Timers_t) TIMER0
 
 /* define millis to store number of milliseconds */
 typedef volatile uint32_t millis_t ;

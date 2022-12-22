@@ -122,17 +122,17 @@ void APP_normal_mode(void)
 	switch(currentState)
 	{
 		case GREEN:
-		TRAFFIC_LIGHT_Drive(&Traffic_light,GREEN) ;
+			TRAFFIC_LIGHT_Drive(&Traffic_light,GREEN) ;
 		break;
 		case YELLOW:
-		if((currentTime-lastTimeYellow)>=YELLOW_LIGHT_BLINKING_INTERVAL)
-		{
-			/*toggle yellow led every 0.25 sec*/
-			TRAFFIC_LIGHT_Drive(&Traffic_light,YELLOW) ;
+			if((currentTime-lastTimeYellow)>=YELLOW_LIGHT_BLINKING_INTERVAL)
+			{
+				/*toggle yellow led every 0.25 sec*/
+				TRAFFIC_LIGHT_Drive(&Traffic_light,YELLOW) ;
 			
-			/*set the old counter to be the current counter to begin counting again*/
-			lastTimeYellow = currentTime ;
-		}
+				/*set the old counter to be the current counter to begin counting again*/
+				lastTimeYellow = currentTime ;
+			}
 		break;
 		case RED:
 		TRAFFIC_LIGHT_Drive(&Traffic_light,RED) ;
