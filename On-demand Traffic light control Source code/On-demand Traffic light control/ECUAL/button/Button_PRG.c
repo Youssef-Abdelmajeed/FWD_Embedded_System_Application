@@ -10,7 +10,6 @@
  */
 
 #include "../../MCAL/DIO/DIO_INT.h"
-#include "../../MCAL/MILLIS/MILLIS_INT.h"
 #include "Button_INT.h"
 
 void Button_Init(ST_Button_t * button)

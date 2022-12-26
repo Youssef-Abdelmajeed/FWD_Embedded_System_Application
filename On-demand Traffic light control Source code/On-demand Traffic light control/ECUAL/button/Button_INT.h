@@ -11,6 +11,7 @@
 
 #ifndef BUTTON_INT_H_
 #define BUTTON_INT_H_
+#include "../../MCAL/MILLIS/MILLIS_INT.h"
 
 /* button general info */
 #define successiveReadingInterval  50                      // Time between two successive readings of a button

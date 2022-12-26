@@ -10,7 +10,6 @@
  */
 #define F_CPU 1000000UL 
 #include "../LIB/STD_TYPES.h"
-#include "../MCAL/MILLIS/MILLIS_INT.h"
 #include "../ECUAL/traffic_light/traffic_light_INT.h"
 #include "../ECUAL/button/Button_INT.h"
 #include "APP_CONFIG.h"
@@ -193,12 +192,27 @@ void APP_pedestrian_mode(void)
 		/* if the cars traffic light was red */
 		if (currentState == RED)
 		{
-			/* set pedestrian sign green led */
-			TRAFFIC_LIGHT_Drive(&Peds_sign,GREEN) ;
 			TRAFFIC_LIGHT_Drive(&Traffic_light,RED) ;
+			switch(state_counter)
+			{
 
-			/* wait 5s and turn off pedestrian mode */
-			turnoff_ped_mode = 1 ;
+			case 1 : 
+				if((currentTime-lastTimeYellow)>=YELLOW_LIGHT_BLINKING_INTERVAL)
+				{
+					/*toggle yellow led every 0.25 sec*/
+					TRAFFIC_LIGHT_Drive(&Peds_sign,YELLOW) ;
+
+					/*set the old counter to be the current counter to begin counting again*/
+					lastTimeYellow = currentTime ;
+				}
+				break;
+			case 2 : 
+				TRAFFIC_LIGHT_Drive(&Peds_sign,GREEN) ;
+				break;
+			case 3:
+				turnoff_ped_mode = 1 ; 
+				break;
+			}
 		}
 		/* if the traffic light was green or yellow */
 		if (currentState == GREEN || currentState ==YELLOW)
@@ -263,4 +277,5 @@ void APP_pedestrian_mode(void)
 			}
 		}
 	}
+	
 }
